@@ -127,7 +127,7 @@ class MoviesGridViewController: UIViewController {
 }
 
 //MARK:- CodeView protocol
-extension MoviesGridViewController: CodeView{
+extension MoviesGridViewController: CodeView {
     
     func buildViewHierarchy() {
         view.addSubview(collectionView)

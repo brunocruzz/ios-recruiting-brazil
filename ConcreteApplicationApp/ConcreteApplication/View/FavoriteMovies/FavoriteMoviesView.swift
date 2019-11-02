@@ -16,6 +16,7 @@ protocol FavoriteMoviesDelegate: class {
 enum PresentationState {
     case withFilter
     case withoutFilter
+    case emptySearch
 }
 
 class FavoriteMoviesView: UIView {
@@ -36,6 +37,13 @@ class FavoriteMoviesView: UIView {
         return button
     }()
     
+    lazy var emptyStateView: EmptySearchView = {
+        let view = EmptySearchView(frame: .zero)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.isHidden = true
+        return view
+    }()
+    
     init(frame: CGRect,
          delegate: FavoriteMoviesDelegate?) {
         super.init(frame: frame)
@@ -52,16 +60,26 @@ class FavoriteMoviesView: UIView {
         self.delegate?.didPressRemoveFilterButton()
     }
     
-    func changePresentationState(to state: PresentationState){
+    func changePresentationState(to state: PresentationState) {
         self.presentationState = state
         
         switch state {
         case .withFilter:
+            tableView.isHidden = false
+            button.isHidden = false
+            emptyStateView.isHidden = true
             setupView()
             break
         case .withoutFilter:
+            tableView.isHidden = false
+            button.isHidden = false
+            emptyStateView.isHidden = true
             self.delegate?.reloadMovies()
             self.setupView()
+        case .emptySearch:
+            tableView.isHidden = true
+            button.isHidden = false
+            emptyStateView.isHidden = false
         }
     }
     
@@ -70,6 +88,7 @@ class FavoriteMoviesView: UIView {
 extension FavoriteMoviesView: CodeView {
     
     func buildViewHierarchy() {
+        addSubview(emptyStateView)
         addSubview(button)
         addSubview(tableView)
     }
@@ -102,6 +121,10 @@ extension FavoriteMoviesView: CodeView {
                 make.trailing.leading.equalToSuperview()
                 make.height.equalToSuperview().multipliedBy(0.1)
             }
+        }
+        
+        emptyStateView.snp.makeConstraints { (make) in
+            make.height.bottom.trailing.leading.equalToSuperview()
         }
         
     }

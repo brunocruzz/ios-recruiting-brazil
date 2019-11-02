@@ -15,6 +15,7 @@ final class EmptySearchView: UIView {
     lazy var label: UILabel = {
         let label = UILabel(frame: .zero)
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "Sua busca não retornou resultados."
         return label
     }()
     

@@ -11,8 +11,6 @@ import SnapKit
 
 class FavoriteMoviesViewController: UIViewController {
     
-    //TODO:- create empty state
-    
     var controllerView = FavoriteMoviesView(frame: .zero, delegate: nil)
     var tableViewDelegate: FavoriteMoviesTableViewDelegate?
     var tableViewDataSource: FavoriteMoviesTableViewDataSource?
@@ -102,16 +100,15 @@ extension FavoriteMoviesViewController: FilterDelegate {
         self.filteredMovies = filteredMovies
         self.setupTableView(with: filteredMovies)
         
-        if filteredMovies.count > 0 {
-            self.controllerView.tableView.scrollToRow(at: IndexPath(row: 0, section: 0),
-                                                      at: .top,
-                                                      animated: true)
+        if filteredMovies.count == 0 {
+            presentationState = .emptySearch
+            return
         }
         
-        //if filteredMovies.count == 0 call emptyState
-        
+        self.controllerView.tableView.scrollToRow(at: IndexPath(row: 0, section: 0),
+                                                  at: .top,
+                                                  animated: true)
     }
-    
 }
 
 extension FavoriteMoviesViewController: FavoriteMoviesDelegate {
@@ -123,5 +120,4 @@ extension FavoriteMoviesViewController: FavoriteMoviesDelegate {
     func reloadMovies() {
         self.getFavoriteMovies()
     }
-    
 }
