@@ -12,6 +12,7 @@ import SnapKit
 class FavoriteMoviesViewController: UIViewController {
     
     //TODO:- create view for controller
+    //TODO:- create empty state
     
     var tableView = FavoriteMoviesTableView()
     var tableViewDelegate: FavoriteMoviesTableViewDelegate?
@@ -177,6 +178,8 @@ extension FavoriteMoviesViewController: FilterDelegate {
         if filteredMovies.count > 0 {
             self.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
         }
+        
+        //if filteredMovies.count == 0 call emptyState
         
     }
     

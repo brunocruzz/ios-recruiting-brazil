@@ -46,6 +46,9 @@
 		EC313D3021CD347900A6848A /* MoviePosterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC313D2F21CD347900A6848A /* MoviePosterTableViewCell.swift */; };
 		EC313D3221CD3E2500A6848A /* DescriptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC313D3121CD3E2500A6848A /* DescriptionTableViewCell.swift */; };
 		EC313D3421CD430D00A6848A /* String + Height.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC313D3321CD430D00A6848A /* String + Height.swift */; };
+		ECAC9093236DE93800CF5C01 /* FilterOptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECAC9092236DE93800CF5C01 /* FilterOptionsView.swift */; };
+		ECAC9095236DEE5600CF5C01 /* FilterOptionsTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECAC9094236DEE5600CF5C01 /* FilterOptionsTableViewDelegate.swift */; };
+		ECAC9097236DF1F500CF5C01 /* FilterOptionsTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECAC9096236DF1F500CF5C01 /* FilterOptionsTableViewDataSource.swift */; };
 		ECDFE7BD219C44DC00B5FEC4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECDFE7BC219C44DC00B5FEC4 /* AppDelegate.swift */; };
 		ECDFE7C7219C44DE00B5FEC4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ECDFE7C6219C44DE00B5FEC4 /* Assets.xcassets */; };
 		ECDFE7CA219C44DE00B5FEC4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ECDFE7C8219C44DE00B5FEC4 /* LaunchScreen.storyboard */; };
@@ -115,6 +118,9 @@
 		EC313D2F21CD347900A6848A /* MoviePosterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviePosterTableViewCell.swift; sourceTree = "<group>"; };
 		EC313D3121CD3E2500A6848A /* DescriptionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionTableViewCell.swift; sourceTree = "<group>"; };
 		EC313D3321CD430D00A6848A /* String + Height.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String + Height.swift"; sourceTree = "<group>"; };
+		ECAC9092236DE93800CF5C01 /* FilterOptionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterOptionsView.swift; sourceTree = "<group>"; };
+		ECAC9094236DEE5600CF5C01 /* FilterOptionsTableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterOptionsTableViewDelegate.swift; sourceTree = "<group>"; };
+		ECAC9096236DF1F500CF5C01 /* FilterOptionsTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterOptionsTableViewDataSource.swift; sourceTree = "<group>"; };
 		ECDFE7B9219C44DC00B5FEC4 /* ConcreteApplication.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ConcreteApplication.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECDFE7BC219C44DC00B5FEC4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ECDFE7C6219C44DE00B5FEC4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -244,6 +250,7 @@
 			children = (
 				EC1BB20221D45A17006E9C4B /* MoviesGridCollectionDelegate.swift */,
 				EC1BB20421D45A76006E9C4B /* FavoriteMoviesTableViewDelegate.swift */,
+				ECAC9094236DEE5600CF5C01 /* FilterOptionsTableViewDelegate.swift */,
 			);
 			path = Delegates;
 			sourceTree = "<group>";
@@ -261,6 +268,7 @@
 			isa = PBXGroup;
 			children = (
 				EC1BB20D21D45FB2006E9C4B /* FilterTableViewCell.swift */,
+				ECAC9092236DE93800CF5C01 /* FilterOptionsView.swift */,
 			);
 			path = Filter;
 			sourceTree = "<group>";
@@ -303,6 +311,7 @@
 			children = (
 				EC313D1421CB398000A6848A /* MoviesGridCollectionDataSource.swift */,
 				EC1BB1FD21D44E80006E9C4B /* FavoriteMoviesTableViewDataSource.swift */,
+				ECAC9096236DF1F500CF5C01 /* FilterOptionsTableViewDataSource.swift */,
 			);
 			path = Datasources;
 			sourceTree = "<group>";
@@ -638,11 +647,14 @@
 				EC313D2721CC09D100A6848A /* Design.swift in Sources */,
 				EC313D1221CB343100A6848A /* MoviesGridViewController.swift in Sources */,
 				EC1BB20321D45A17006E9C4B /* MoviesGridCollectionDelegate.swift in Sources */,
+				ECAC9095236DEE5600CF5C01 /* FilterOptionsTableViewDelegate.swift in Sources */,
 				EC00AD9F21CEF3E8006BBED0 /* GenreRealm.swift in Sources */,
 				EC1BB1FE21D44E80006E9C4B /* FavoriteMoviesTableViewDataSource.swift in Sources */,
 				EC1BB20521D45A76006E9C4B /* FavoriteMoviesTableViewDelegate.swift in Sources */,
+				ECAC9093236DE93800CF5C01 /* FilterOptionsView.swift in Sources */,
 				EC00ADA521CFEC5B006BBED0 /* FavoriteMovieTableViewCell.swift in Sources */,
 				ECDFE7BD219C44DC00B5FEC4 /* AppDelegate.swift in Sources */,
+				ECAC9097236DF1F500CF5C01 /* FilterOptionsTableViewDataSource.swift in Sources */,
 				EC15623B21CACE9F008E7884 /* TMDBManager.swift in Sources */,
 				EC313D2B21CC7CD100A6848A /* ErrorView.swift in Sources */,
 				EC1BB20B21D45E61006E9C4B /* FilterOptionsViewController.swift in Sources */,
