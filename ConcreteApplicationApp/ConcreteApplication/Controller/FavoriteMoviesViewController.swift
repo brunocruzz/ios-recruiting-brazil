@@ -11,39 +11,34 @@ import SnapKit
 
 class FavoriteMoviesViewController: UIViewController {
     
-    //TODO:- create view for controller
     //TODO:- create empty state
     
-    var tableView = FavoriteMoviesTableView()
+    var controllerView = FavoriteMoviesView(frame: .zero, delegate: nil)
     var tableViewDelegate: FavoriteMoviesTableViewDelegate?
     var tableViewDataSource: FavoriteMoviesTableViewDataSource?
     
     var favoritedMovies: [Movie] = []
     var filteredMovies: [Movie] = []
     
-    fileprivate enum PresentationState{
-        case withFilter
-        case withoutFilter
-    }
     
-    fileprivate var presentationState: PresentationState = .withoutFilter{
-        didSet{
-            changePresentationState(to: presentationState)
+    fileprivate var presentationState: PresentationState = .withoutFilter {
+        didSet {
+            controllerView.changePresentationState(to: presentationState)
         }
     }
     
-    lazy var button: UIButton = {
-        let button = UIButton(frame: .zero)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }()
+    override func loadView() {
+        self.controllerView.delegate = self
+        self.view = controllerView
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.presentationState = .withoutFilter
-        setupView()
+         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "FilterIcon"),
+                                                             style: .plain, target: self,
+                                                             action: #selector(pushFilterOptions))
     }
-    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -60,11 +55,13 @@ class FavoriteMoviesViewController: UIViewController {
     }
     
     func setupTableView(with movies: [Movie]) {
-        tableViewDelegate = FavoriteMoviesTableViewDelegate(favoritedMovies: movies, delegate: self)
-        self.tableView.delegate = tableViewDelegate
-        tableViewDataSource = FavoriteMoviesTableViewDataSource(favoritedMovies: movies, tableView: self.tableView)
-        self.tableView.dataSource = tableViewDataSource
-        self.tableView.reloadData()
+        tableViewDelegate = FavoriteMoviesTableViewDelegate(favoritedMovies: movies,
+                                                            delegate: self)
+        self.controllerView.tableView.delegate = tableViewDelegate
+        tableViewDataSource = FavoriteMoviesTableViewDataSource(favoritedMovies: movies,
+                                                                tableView: self.controllerView.tableView)
+        self.controllerView.tableView.dataSource = tableViewDataSource
+        self.controllerView.tableView.reloadData()
     }
     
     @objc
@@ -74,84 +71,13 @@ class FavoriteMoviesViewController: UIViewController {
         self.navigationController?.pushViewController(filterViewController, animated: true)
     }
     
-    fileprivate func changePresentationState(to state: PresentationState){
-        switch state {
-        case .withFilter:
-            setupView()
-            break
-        case .withoutFilter:
-            getFavoriteMovies()
-            self.setupView()
-        }
-    }
-    
-    @objc
     func removeFilter(){
         self.presentationState = .withoutFilter
     }
     
 }
 
-extension FavoriteMoviesViewController: CodeView{
-    
-    func buildViewHierarchy() {
-        view.addSubview(button)
-        view.addSubview(tableView)
-    }
-    
-    func setupConstraints() {
-        
-        tableView.snp.removeConstraints()
-        button.snp.removeConstraints()
-        
-        if self.presentationState == .withoutFilter{
-        
-            tableView.snp.makeConstraints { (make) in
-                make.height.equalToSuperview()
-                make.bottom.equalToSuperview()
-                make.trailing.equalToSuperview()
-                make.leading.equalToSuperview()
-            }
-            
-            button.snp.makeConstraints { (make) in
-                make.bottom.equalTo(tableView.snp.top)
-                make.trailing.equalToSuperview()
-                make.leading.equalToSuperview()
-                make.height.equalTo(0)
-            }
-        }else{
-            
-            tableView.snp.makeConstraints { (make) in
-                make.height.equalToSuperview().multipliedBy(0.8)
-                make.bottom.equalToSuperview()
-                make.trailing.equalToSuperview()
-                make.leading.equalToSuperview()
-            }
-    
-            button.snp.makeConstraints { (make) in
-                make.bottom.equalTo(tableView.snp.top)
-                make.trailing.equalToSuperview()
-                make.leading.equalToSuperview()
-                make.height.equalToSuperview().multipliedBy(0.1)
-            }
-        }
-        
-    }
-    
-    func setupAdditionalConfiguration() {
-        
-        button.setTitle("Remove Filter", for: .normal)
-        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18.0)
-        button.setTitleColor(Design.Colors.darkYellow, for: .normal)
-        button.backgroundColor = Design.Colors.darkBlue
-        button.addTarget(self, action: #selector(removeFilter), for: .touchUpInside)
-        
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "FilterIcon"), style: .plain, target: self, action: #selector(pushFilterOptions))
-    }
-    
-}
-
-extension FavoriteMoviesViewController: UnfavoriteMovieDelegate{
+extension FavoriteMoviesViewController: UnfavoriteMovieDelegate {
     
     func deleteRowAt(indexPath: IndexPath) {
         
@@ -162,7 +88,8 @@ extension FavoriteMoviesViewController: UnfavoriteMovieDelegate{
         if let movieToDelete = RealmManager.shared.get(objectOf: MovieRealm.self, with: movies[indexPath.row].id){
             RealmManager.shared.delete(object: movieToDelete)
             tableViewDataSource?.favoritedMovies.remove(at: indexPath.row)
-            self.tableView.deleteRows(at: [indexPath], with: .automatic)
+            self.controllerView.tableView.deleteRows(at: [indexPath],
+                                                     with: .automatic)
         }
     }
     
@@ -176,11 +103,25 @@ extension FavoriteMoviesViewController: FilterDelegate {
         self.setupTableView(with: filteredMovies)
         
         if filteredMovies.count > 0 {
-            self.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
+            self.controllerView.tableView.scrollToRow(at: IndexPath(row: 0, section: 0),
+                                                      at: .top,
+                                                      animated: true)
         }
         
         //if filteredMovies.count == 0 call emptyState
         
+    }
+    
+}
+
+extension FavoriteMoviesViewController: FavoriteMoviesDelegate {
+    
+    func didPressRemoveFilterButton() {
+        self.removeFilter()
+    }
+    
+    func reloadMovies() {
+        self.getFavoriteMovies()
     }
     
 }
