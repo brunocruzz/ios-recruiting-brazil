@@ -10,12 +10,14 @@ import UIKit
 import Reusable
 import SnapKit
 
-enum FilterOptions: String, CaseIterable{
+enum FilterOptions: String, CaseIterable {
     case date = "Date"
     case genre = "Genres"
 }
 
 class FilterOptionsViewController: UIViewController {
+    
+    //TODO:- create view for controller
     
     var tableView = UITableView(frame: .zero, style: .grouped)
     let filterOptions = FilterOptions.allCases
@@ -35,7 +37,6 @@ class FilterOptionsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupView()
         setupTableView()
     }
@@ -47,7 +48,7 @@ class FilterOptionsViewController: UIViewController {
         self.movies = movies
     }
     
-    func setupTableView(){
+    func setupTableView() {
         self.title = "Filter"
         self.tableView.delegate = self
         self.tableView.dataSource = self
@@ -60,24 +61,24 @@ class FilterOptionsViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func getParameters(for movies: [Movie]){
+    func getParameters(for movies: [Movie]) {
         self.genresParameters = []
         self.releasedYearsParameters = []
         
         movies.forEach { (movie) in
             movie.genres.forEach({
-                if !self.genresParameters.contains($0.name ?? ""){
+                if !self.genresParameters.contains($0.name ?? "") {
                     self.genresParameters.append($0.name ?? "")
                 }
             })
-            if !self.releasedYearsParameters.contains(movie.releaseYear){
+            if !self.releasedYearsParameters.contains(movie.releaseYear) {
                 self.releasedYearsParameters.append(movie.releaseYear)
             }
         }
     }
     
     @objc
-    func applyFilter(){
+    func applyFilter() {
         
         let filteredMovies = self.movies.filter({ (movie) -> Bool in
             var matchedYear = false
@@ -85,13 +86,13 @@ class FilterOptionsViewController: UIViewController {
             
             if let releasedYearFilter = self.filter.releaseYear {
                 matchedYear = movie.releaseYear == releasedYearFilter
-            }else{
+            } else {
                 matchedYear = true
             }
             
-            if let genreFilter = self.filter.genre{
+            if let genreFilter = self.filter.genre {
                 matchedGenre = movie.genres.contains(where: {$0.name?.lowercased() == genreFilter.lowercased()})
-            }else{
+            } else {
                 matchedGenre = true
             }
             

@@ -9,9 +9,11 @@
 import Foundation
 import UIKit
 
-class MoviesGridCollectionView: UICollectionView{
+class MoviesGridCollectionView: UICollectionView {
     
-    override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
+    override init(frame: CGRect,
+                  collectionViewLayout layout: UICollectionViewLayout) {
+        
         let layout = UICollectionViewFlowLayout()
         layout.sectionInset = Design.Insets.moviesGridCollection
         

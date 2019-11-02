@@ -18,14 +18,14 @@ final class MoviePosterTableViewCell: UITableViewCell, Reusable {
         return poster
     }()
     
-    func setup(posterImage: UIImage){
+    func setup(posterImage: UIImage) {
         self.poster.image = posterImage
         setupView()
     }
-
 }
 
-extension MoviePosterTableViewCell: CodeView{
+extension MoviePosterTableViewCell: CodeView {
+    
     func buildViewHierarchy() {
         contentView.addSubview(poster)
     }

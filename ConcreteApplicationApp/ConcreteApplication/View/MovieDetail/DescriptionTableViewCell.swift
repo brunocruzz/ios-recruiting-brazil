@@ -16,7 +16,7 @@ protocol FavoriteMovieDelegate: class {
 
 final class DescriptionTableViewCell: UITableViewCell, Reusable {
     
-    var isFavorite:Bool = false
+    var isFavorite: Bool = false
     var favoriteDelegate: FavoriteMovieDelegate?
     
     lazy var label: UILabel = {
@@ -31,26 +31,24 @@ final class DescriptionTableViewCell: UITableViewCell, Reusable {
         return button
     }()
     
-    func setup(movieDetail: String){
-        label.text = movieDetail
-        button.isHidden = true
-        setupView()
-    }
-    
-    func setup(movieDetail: String, isFavorite: Bool, delegate: FavoriteMovieDelegate){
+    func setup(movieDetail: String,
+               isFavorite: Bool = false,
+               delegate: FavoriteMovieDelegate? = nil) {
+        
         self.isFavorite = isFavorite
         self.favoriteDelegate = delegate
         label.text = movieDetail
-        button.isHidden = false
+        button.isHidden = delegate == nil ? true : false
         setupView()
     }
     
     @objc
-    func favoriteButtonTapped(){
+    func favoriteButtonTapped() {
+        
         self.isFavorite = !self.isFavorite
-        if self.isFavorite{
+        if self.isFavorite {
             button.setImage(UIImage(named: "favorite_full_icon"), for: .normal)
-        }else{
+        } else {
             button.setImage(UIImage(named: "favorite_gray_icon"), for: .normal)
         }
         self.favoriteDelegate?.changeFavorite(to: self.isFavorite)
@@ -59,7 +57,8 @@ final class DescriptionTableViewCell: UITableViewCell, Reusable {
     
 }
 
-extension DescriptionTableViewCell: CodeView{
+extension DescriptionTableViewCell: CodeView {
+    
     func buildViewHierarchy() {
         contentView.addSubview(label)
         contentView.addSubview(button)
@@ -90,13 +89,13 @@ extension DescriptionTableViewCell: CodeView{
         
         button.contentMode = .scaleAspectFit
         button.addTarget(self, action: #selector(favoriteButtonTapped), for: .touchUpInside)
-        if isFavorite{
+        
+        if isFavorite {
             button.setImage(UIImage(named: "favorite_full_icon"), for: .normal)
-        }else{
+        } else {
             button.setImage(UIImage(named: "favorite_gray_icon"), for: .normal)
         }
         
     }
-    
     
 }

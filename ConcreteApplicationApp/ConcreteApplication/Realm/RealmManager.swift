@@ -9,28 +9,28 @@
 
 import RealmSwift
 
-class RealmManager{
+class RealmManager {
     
     static let shared = RealmManager()
     private var realm: Realm
     
-    private init(){
+    private init() {
         self.realm = try! Realm()
     }
     
-    func save(object: Object){
+    func save(object: Object) {
         try! realm.write {
             realm.add(object)
         }
     }
     
-    func delete(object: Object){
+    func delete(object: Object) {
         try! realm.write {
             realm.delete(object)
         }
     }
     
-    func update(object: Object){
+    func update(object: Object) {
         try! realm.write {
             realm.add(object, update: true)
         }
@@ -46,8 +46,4 @@ class RealmManager{
     func getAll<T: Object>(objectsOf type: T.Type) -> Results<T> {
         return realm.objects(type)
     }
-
-    
-    
 }
-

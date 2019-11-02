@@ -11,14 +11,14 @@ import SnapKit
 
 class FavoriteMoviesViewController: UIViewController {
     
-    //FIXME:- unfavoriting movie when filter is applied is not working
+    //TODO:- create view for controller
     
     var tableView = FavoriteMoviesTableView()
     var tableViewDelegate: FavoriteMoviesTableViewDelegate?
     var tableViewDataSource: FavoriteMoviesTableViewDataSource?
     
-    var favoritedMovies:[Movie] = []
-    var filteredMovies:[Movie] = []
+    var favoritedMovies: [Movie] = []
+    var filteredMovies: [Movie] = []
     
     fileprivate enum PresentationState{
         case withFilter
@@ -51,14 +51,14 @@ class FavoriteMoviesViewController: UIViewController {
         }
     }
     
-    func getFavoriteMovies(){
+    func getFavoriteMovies() {
         self.favoritedMovies = []
         let favoriteMoviesRealm = RealmManager.shared.getAll(objectsOf: MovieRealm.self)
         favoriteMoviesRealm.forEach({self.favoritedMovies.append(Movie(realmObject: $0))})
         self.setupTableView(with: self.favoritedMovies)
     }
     
-    func setupTableView(with movies: [Movie]){
+    func setupTableView(with movies: [Movie]) {
         tableViewDelegate = FavoriteMoviesTableViewDelegate(favoritedMovies: movies, delegate: self)
         self.tableView.delegate = tableViewDelegate
         tableViewDataSource = FavoriteMoviesTableViewDataSource(favoritedMovies: movies, tableView: self.tableView)
@@ -167,13 +167,17 @@ extension FavoriteMoviesViewController: UnfavoriteMovieDelegate{
     
 }
 
-extension FavoriteMoviesViewController: FilterDelegate{
+extension FavoriteMoviesViewController: FilterDelegate {
     
     func updateMovies(with filteredMovies: [Movie]) {
         self.presentationState = .withFilter
         self.filteredMovies = filteredMovies
         self.setupTableView(with: filteredMovies)
-        self.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
+        
+        if filteredMovies.count > 0 {
+            self.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
+        }
+        
     }
     
 }

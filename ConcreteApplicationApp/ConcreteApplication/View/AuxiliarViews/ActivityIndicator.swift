@@ -8,9 +8,10 @@
 
 import UIKit
 
-class ActivityIndicator: UIActivityIndicatorView{
+class ActivityIndicator: UIActivityIndicatorView {
     
     override init(frame: CGRect) {
+        
         super.init(style: .whiteLarge)
         self.color = Design.Colors.darkBlue
         self.contentMode = .scaleAspectFit

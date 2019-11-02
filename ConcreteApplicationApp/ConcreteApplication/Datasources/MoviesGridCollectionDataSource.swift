@@ -18,12 +18,15 @@ protocol MoviesGridPagingDelegate: class {
     func shouldFetch(page: Int)
 }
 
-final class MoviesGridCollectionDataSource: NSObject, UICollectionViewDataSource{
+final class MoviesGridCollectionDataSource: NSObject, UICollectionViewDataSource {
     
     var movies:[Movie] = []
     var pagingDelegate: MoviesGridPagingDelegate?
     
-    init(movies:[Movie], collectionView: UICollectionView, pagingDelegate: MoviesGridPagingDelegate) {
+    init(movies:[Movie],
+         collectionView: UICollectionView,
+         pagingDelegate: MoviesGridPagingDelegate) {
+        
         self.movies = movies
         self.pagingDelegate = pagingDelegate
         super.init()
@@ -42,7 +45,7 @@ final class MoviesGridCollectionDataSource: NSObject, UICollectionViewDataSource
     }
 }
 
-extension MoviesGridCollectionDataSource: UICollectionViewDataSourcePrefetching{
+extension MoviesGridCollectionDataSource: UICollectionViewDataSourcePrefetching {
     
     func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
         let itemsPerRow = 2

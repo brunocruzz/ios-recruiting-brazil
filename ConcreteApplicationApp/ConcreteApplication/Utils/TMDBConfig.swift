@@ -8,16 +8,16 @@
 
 import Foundation
 
-struct TMDBConfig{
+struct TMDBConfig {
     
     static let privateKey = "9b9f207b503e03a4e0b1267156c23dd2"
     
-    struct langugae{
+    struct langugae {
         static let english = "en"
         static let portuguese = "pt"
     }
     
-    struct endPoint{
+    struct endPoint {
         static let popular = "https://api.themoviedb.org/3/movie/popular"
         static let genres = "https://api.themoviedb.org/3/genre/movie/list"
     }

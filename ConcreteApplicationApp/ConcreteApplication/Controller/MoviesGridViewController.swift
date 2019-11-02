@@ -11,6 +11,8 @@ import SnapKit
 
 class MoviesGridViewController: UIViewController {
     
+    //TODO:- Create view for controller
+    
     //CollectionView
     let collectionView = MoviesGridCollectionView()
     var collectionViewDataSource: MoviesGridCollectionDataSource?
@@ -228,14 +230,14 @@ extension MoviesGridViewController: UISearchBarDelegate{
     }
     
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-        if searchBar.text?.isEmpty ?? true{
+        if searchBar.text?.isEmpty ?? true {
             handleFetchOf(movies: self.movies)
-        }else{
+        } else {
         let filteredMovies = self.movies.filter({$0.title.range(of: searchBar.text ?? "", options: .caseInsensitive) != nil})
             if filteredMovies.count == 0{
                 self.emptySearchView.text = searchBar.text ?? ""
                 self.presentationState = .emptySearch
-            }else{
+            } else {
                 handleFetchOf(movies: filteredMovies)
             }
         }

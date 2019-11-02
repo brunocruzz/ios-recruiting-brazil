@@ -9,7 +9,9 @@
 import RealmSwift
 
 extension Object {
+    
     static func build<T: Object>(_ builder: (T) -> Void ) -> T {
+        
         let rlm = T()
         builder(rlm)
         return rlm

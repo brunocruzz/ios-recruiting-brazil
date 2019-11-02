@@ -42,13 +42,12 @@ class TMDBManager{
             
             let jsonDecoder = JSONDecoder()
             
-            do{
+            do {
                 let moviesResponse = try jsonDecoder.decode(TMDBResponse.self, from: data)
                 DispatchQueue.main.async {
                     completion(.success(moviesResponse.results))
                 }
             } catch {
-//                print(String.init(data: data, encoding: String.Encoding.utf8)!)
                 completion(.error(TMDBError.jsonSerialization(error.localizedDescription)))
             }
             

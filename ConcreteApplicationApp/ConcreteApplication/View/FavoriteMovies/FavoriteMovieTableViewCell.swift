@@ -38,7 +38,7 @@ class FavoriteMovieTableViewCell: UITableViewCell, Reusable {
         return overviewLabel
     }()
     
-    func setup(movie: Movie){
+    func setup(movie: Movie) {
         self.movie = movie
         setupView()
     }
@@ -98,6 +98,5 @@ extension FavoriteMovieTableViewCell: CodeView{
         overviewLabel.numberOfLines = 3
         
     }
-    
     
 }

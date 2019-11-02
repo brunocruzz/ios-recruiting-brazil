@@ -8,12 +8,12 @@
 
 import Foundation
 
-struct GenreResponse{
+struct GenreResponse {
     var genres: [Genre]
 }
 
-extension GenreResponse: Codable{
-    enum CodingKeys: String, CodingKey{
+extension GenreResponse: Codable {
+    enum CodingKeys: String, CodingKey {
         case genres
     }
 }

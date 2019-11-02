@@ -9,8 +9,11 @@
 import UIKit
 import SDWebImage
 
-extension UIImageView{
-    func downloadImage(with path: String){
-        self.sd_setImage(with: URL(string: "https://image.tmdb.org/t/p/w500" + path), placeholderImage: UIImage(named: "Splash"), options: .progressiveDownload)
+extension UIImageView {
+    
+    func downloadImage(with path: String) {
+        self.sd_setImage(with: URL(string: "https://image.tmdb.org/t/p/w500" + path),
+                         placeholderImage: UIImage(named: "Splash"),
+                         options: .progressiveDownload)
     }
 }
