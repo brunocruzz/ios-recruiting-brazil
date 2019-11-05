@@ -40,7 +40,7 @@ class FavoriteMoviesViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if presentationState == .withoutFilter{
+        if presentationState == .withoutFilter {
             self.getFavoriteMovies()
         }
     }
@@ -63,13 +63,13 @@ class FavoriteMoviesViewController: UIViewController {
     }
     
     @objc
-    func pushFilterOptions(){
+    func pushFilterOptions() {
         let filterViewController = FilterOptionsViewController(movies: favoritedMovies, delegate: self)
         filterViewController.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(filterViewController, animated: true)
     }
     
-    func removeFilter(){
+    func removeFilter() {
         self.presentationState = .withoutFilter
     }
     
@@ -83,7 +83,7 @@ extension FavoriteMoviesViewController: UnfavoriteMovieDelegate {
         if presentationState == .withFilter{
             movies = filteredMovies
         }
-        if let movieToDelete = RealmManager.shared.get(objectOf: MovieRealm.self, with: movies[indexPath.row].id){
+        if let movieToDelete = RealmManager.shared.get(objectOf: MovieRealm.self, with: movies[indexPath.row].id) {
             RealmManager.shared.delete(object: movieToDelete)
             tableViewDataSource?.favoritedMovies.remove(at: indexPath.row)
             self.controllerView.tableView.deleteRows(at: [indexPath],

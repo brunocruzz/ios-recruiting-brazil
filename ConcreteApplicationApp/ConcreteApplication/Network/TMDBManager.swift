@@ -19,7 +19,7 @@ class TMDBManager{
         ]
     }
     
-    func getPopularMovies(page: Int, completion: @escaping (Result<[Movie]>) -> Void){
+    func getPopularMovies(page: Int, completion: @escaping (Result<[Movie]>) -> Void) {
         let endPoint = TMDBConfig.endPoint.popular
         var urlComponents = URLComponents(string: endPoint)
         
@@ -54,7 +54,7 @@ class TMDBManager{
             }.resume()
     }
     
-    func getGenres(completion: @escaping (Result<[Genre]>) -> Void){
+    func getGenres(completion: @escaping (Result<[Genre]>) -> Void) {
         let endPoint = TMDBConfig.endPoint.genres
         var urlComponents = URLComponents(string: endPoint)
         

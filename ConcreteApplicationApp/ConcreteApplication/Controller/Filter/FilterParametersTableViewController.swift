@@ -15,8 +15,8 @@ protocol FilterDelegate: class {
 }
 
 extension FilterDelegate {
-    func updateParameter(for option: FilterOptions, with value: String){}
-    func updateMovies(with filteredMovies:[Movie]){}
+    func updateParameter(for option: FilterOptions, with value: String) {}
+    func updateMovies(with filteredMovies:[Movie]) {}
 }
 
 class FilterParametersTableViewController: UITableViewController {

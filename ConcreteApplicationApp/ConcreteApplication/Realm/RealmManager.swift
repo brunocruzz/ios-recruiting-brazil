@@ -37,7 +37,7 @@ class RealmManager {
     }
     
     func get<T: Object>(objectOf type: T.Type, with primaryKey: Int) -> T? {
-        if let object = realm.object(ofType: type, forPrimaryKey: primaryKey){
+        if let object = realm.object(ofType: type, forPrimaryKey: primaryKey) {
             return object
         }
         return nil
