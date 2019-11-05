@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		48662E7B0A2345097107AF90 /* Pods_ConcreteApplicationTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 872C17C5FB776C6CD78DA203 /* Pods_ConcreteApplicationTests.framework */; };
 		9DB006A9F2B6DAC2C19EF672 /* Pods_ConcreteApplication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4787835CB6A0A1C856E49D66 /* Pods_ConcreteApplication.framework */; };
-		A4D43671A3842724DC47D9B0 /* Pods_ConcreteApplicationUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EB22BB9CC7EBA5E0DD4EA7F /* Pods_ConcreteApplicationUITests.framework */; };
 		EC00AD9A21CEEAF4006BBED0 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC00AD9921CEEAF4006BBED0 /* RealmManager.swift */; };
 		EC00AD9D21CEF214006BBED0 /* MovieRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC00AD9C21CEF214006BBED0 /* MovieRealm.swift */; };
 		EC00AD9F21CEF3E8006BBED0 /* GenreRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC00AD9E21CEF3E8006BBED0 /* GenreRealm.swift */; };
@@ -50,12 +49,12 @@
 		ECAC9095236DEE5600CF5C01 /* FilterOptionsTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECAC9094236DEE5600CF5C01 /* FilterOptionsTableViewDelegate.swift */; };
 		ECAC9097236DF1F500CF5C01 /* FilterOptionsTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECAC9096236DF1F500CF5C01 /* FilterOptionsTableViewDataSource.swift */; };
 		ECAC9099236DF54100CF5C01 /* FavoriteMoviesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECAC9098236DF54100CF5C01 /* FavoriteMoviesView.swift */; };
+		ECC8070D23712BF700B97116 /* MoviesGridViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECC8070C23712BF700B97116 /* MoviesGridViewControllerSpec.swift */; };
 		ECD203B523711418005B3CD9 /* MoviesGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD203B423711418005B3CD9 /* MoviesGridView.swift */; };
 		ECDFE7BD219C44DC00B5FEC4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECDFE7BC219C44DC00B5FEC4 /* AppDelegate.swift */; };
 		ECDFE7C7219C44DE00B5FEC4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ECDFE7C6219C44DE00B5FEC4 /* Assets.xcassets */; };
 		ECDFE7CA219C44DE00B5FEC4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ECDFE7C8219C44DE00B5FEC4 /* LaunchScreen.storyboard */; };
 		ECDFE7D5219C44DE00B5FEC4 /* ConcreteApplicationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECDFE7D4219C44DE00B5FEC4 /* ConcreteApplicationTests.swift */; };
-		ECDFE7E0219C44DE00B5FEC4 /* ConcreteApplicationUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECDFE7DF219C44DE00B5FEC4 /* ConcreteApplicationUITests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,8 +77,6 @@
 /* Begin PBXFileReference section */
 		4787835CB6A0A1C856E49D66 /* Pods_ConcreteApplication.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ConcreteApplication.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6EB22BB9CC7EBA5E0DD4EA7F /* Pods_ConcreteApplicationUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ConcreteApplicationUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		784A99444F19A02D1BE9BA48 /* Pods-ConcreteApplicationUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ConcreteApplicationUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ConcreteApplicationUITests/Pods-ConcreteApplicationUITests.release.xcconfig"; sourceTree = "<group>"; };
-		851793B3676235F5798740E0 /* Pods-ConcreteApplicationUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ConcreteApplicationUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ConcreteApplicationUITests/Pods-ConcreteApplicationUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		872C17C5FB776C6CD78DA203 /* Pods_ConcreteApplicationTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ConcreteApplicationTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A291D4F481F8509ED236430F /* Pods-ConcreteApplication.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ConcreteApplication.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ConcreteApplication/Pods-ConcreteApplication.debug.xcconfig"; sourceTree = "<group>"; };
 		AF0AA62CDCF88BEB87BEA257 /* Pods-ConcreteApplicationTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ConcreteApplicationTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ConcreteApplicationTests/Pods-ConcreteApplicationTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -124,6 +121,7 @@
 		ECAC9094236DEE5600CF5C01 /* FilterOptionsTableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterOptionsTableViewDelegate.swift; sourceTree = "<group>"; };
 		ECAC9096236DF1F500CF5C01 /* FilterOptionsTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterOptionsTableViewDataSource.swift; sourceTree = "<group>"; };
 		ECAC9098236DF54100CF5C01 /* FavoriteMoviesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteMoviesView.swift; sourceTree = "<group>"; };
+		ECC8070C23712BF700B97116 /* MoviesGridViewControllerSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesGridViewControllerSpec.swift; sourceTree = "<group>"; };
 		ECD203B423711418005B3CD9 /* MoviesGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesGridView.swift; sourceTree = "<group>"; };
 		ECDFE7B9219C44DC00B5FEC4 /* ConcreteApplication.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ConcreteApplication.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECDFE7BC219C44DC00B5FEC4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -134,8 +132,6 @@
 		ECDFE7D4219C44DE00B5FEC4 /* ConcreteApplicationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConcreteApplicationTests.swift; sourceTree = "<group>"; };
 		ECDFE7D6219C44DE00B5FEC4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ECDFE7DB219C44DE00B5FEC4 /* ConcreteApplicationUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ConcreteApplicationUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		ECDFE7DF219C44DE00B5FEC4 /* ConcreteApplicationUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConcreteApplicationUITests.swift; sourceTree = "<group>"; };
-		ECDFE7E1219C44DE00B5FEC4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FC51CC298C30A2D9B2F7F9B2 /* Pods-ConcreteApplication.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ConcreteApplication.release.xcconfig"; path = "Pods/Target Support Files/Pods-ConcreteApplication/Pods-ConcreteApplication.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -160,7 +156,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A4D43671A3842724DC47D9B0 /* Pods_ConcreteApplicationUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -184,8 +179,6 @@
 				FC51CC298C30A2D9B2F7F9B2 /* Pods-ConcreteApplication.release.xcconfig */,
 				C00A3057561FBD765CE9A9C1 /* Pods-ConcreteApplicationTests.debug.xcconfig */,
 				AF0AA62CDCF88BEB87BEA257 /* Pods-ConcreteApplicationTests.release.xcconfig */,
-				851793B3676235F5798740E0 /* Pods-ConcreteApplicationUITests.debug.xcconfig */,
-				784A99444F19A02D1BE9BA48 /* Pods-ConcreteApplicationUITests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -349,12 +342,19 @@
 			path = MovieDetail;
 			sourceTree = "<group>";
 		};
+		ECC8070B23712BCA00B97116 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				ECC8070C23712BF700B97116 /* MoviesGridViewControllerSpec.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
 		ECDFE7B0219C44DB00B5FEC4 = {
 			isa = PBXGroup;
 			children = (
 				ECDFE7BB219C44DC00B5FEC4 /* ConcreteApplication */,
 				ECDFE7D3219C44DE00B5FEC4 /* ConcreteApplicationTests */,
-				ECDFE7DE219C44DE00B5FEC4 /* ConcreteApplicationUITests */,
 				ECDFE7BA219C44DC00B5FEC4 /* Products */,
 				7308F9747052ED92E83832EE /* Pods */,
 				70A1C2ECD06364985300F15B /* Frameworks */,
@@ -394,19 +394,11 @@
 		ECDFE7D3219C44DE00B5FEC4 /* ConcreteApplicationTests */ = {
 			isa = PBXGroup;
 			children = (
+				ECC8070B23712BCA00B97116 /* Controllers */,
 				ECDFE7D4219C44DE00B5FEC4 /* ConcreteApplicationTests.swift */,
 				ECDFE7D6219C44DE00B5FEC4 /* Info.plist */,
 			);
 			path = ConcreteApplicationTests;
-			sourceTree = "<group>";
-		};
-		ECDFE7DE219C44DE00B5FEC4 /* ConcreteApplicationUITests */ = {
-			isa = PBXGroup;
-			children = (
-				ECDFE7DF219C44DE00B5FEC4 /* ConcreteApplicationUITests.swift */,
-				ECDFE7E1219C44DE00B5FEC4 /* Info.plist */,
-			);
-			path = ConcreteApplicationUITests;
 			sourceTree = "<group>";
 		};
 		ECDFE7ED219C458E00B5FEC4 /* Network */ = {
@@ -448,6 +440,7 @@
 				ECDFE7CC219C44DE00B5FEC4 /* Sources */,
 				ECDFE7CD219C44DE00B5FEC4 /* Frameworks */,
 				ECDFE7CE219C44DE00B5FEC4 /* Resources */,
+				2D1C9BC9689E8DE905D950F7 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -463,7 +456,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = ECDFE7EA219C44DE00B5FEC4 /* Build configuration list for PBXNativeTarget "ConcreteApplicationUITests" */;
 			buildPhases = (
-				960CB05662381BA96301880A /* [CP] Check Pods Manifest.lock */,
 				ECDFE7D7219C44DE00B5FEC4 /* Sources */,
 				ECDFE7D8219C44DE00B5FEC4 /* Frameworks */,
 				ECDFE7D9219C44DE00B5FEC4 /* Resources */,
@@ -548,6 +540,26 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		2D1C9BC9689E8DE905D950F7 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-ConcreteApplicationTests/Pods-ConcreteApplicationTests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework",
+				"${BUILT_PRODUCTS_DIR}/Quick/Quick.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nimble.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Quick.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ConcreteApplicationTests/Pods-ConcreteApplicationTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		56246E4F03D0D7C5528DBE54 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -578,24 +590,6 @@
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-ConcreteApplication-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		960CB05662381BA96301880A /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-ConcreteApplicationUITests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -684,6 +678,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ECC8070D23712BF700B97116 /* MoviesGridViewControllerSpec.swift in Sources */,
 				ECDFE7D5219C44DE00B5FEC4 /* ConcreteApplicationTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -692,7 +687,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ECDFE7E0219C44DE00B5FEC4 /* ConcreteApplicationUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -884,6 +878,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = R8QSMBZSJR;
 				INFOPLIST_FILE = ConcreteApplicationTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -905,6 +900,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = R8QSMBZSJR;
 				INFOPLIST_FILE = ConcreteApplicationTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -921,10 +917,10 @@
 		};
 		ECDFE7EB219C44DE00B5FEC4 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 851793B3676235F5798740E0 /* Pods-ConcreteApplicationUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = R8QSMBZSJR;
 				INFOPLIST_FILE = ConcreteApplicationUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -936,15 +932,16 @@
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = ConcreteApplication;
+				VALID_ARCHS = "arm64e armv7 armv7s";
 			};
 			name = Debug;
 		};
 		ECDFE7EC219C44DE00B5FEC4 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 784A99444F19A02D1BE9BA48 /* Pods-ConcreteApplicationUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = R8QSMBZSJR;
 				INFOPLIST_FILE = ConcreteApplicationUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -956,6 +953,7 @@
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = ConcreteApplication;
+				VALID_ARCHS = "arm64e armv7 armv7s";
 			};
 			name = Release;
 		};
