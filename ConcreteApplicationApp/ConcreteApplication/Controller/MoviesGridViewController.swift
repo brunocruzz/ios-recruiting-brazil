@@ -34,7 +34,7 @@ class MoviesGridViewController: UIViewController {
             }
         }
     }
-    
+        
     override func loadView() {
         self.view = controllerView
     }
@@ -42,6 +42,7 @@ class MoviesGridViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupSearchBar()
+        setupRefreshControl()
         presentationState = .loadingContent
         self.fetchGenres()
     }
@@ -54,7 +55,7 @@ class MoviesGridViewController: UIViewController {
     func fetchGenres() {
         tmdb.getGenres { (result) in
             self.presentationState = .loadingContent
-            switch result{
+            switch result {
             case .success(let genres):
                 self.genres = genres
                 self.fetchMovies(page: 1)
@@ -112,6 +113,21 @@ class MoviesGridViewController: UIViewController {
         collectionViewDelegate = MoviesGridCollectionDelegate(movies: movies, delegate: self)
         controllerView.collectionView.delegate = collectionViewDelegate
         controllerView.collectionView.reloadData()
+    }
+    
+//MARK:- Pull to refresh
+    func setupRefreshControl() {
+        self.controllerView.collectionView.refreshControl?.addTarget(self,
+                                                                     action: #selector(refreshItems),
+                                                                     for: .valueChanged)
+    }
+    
+    @objc
+    func refreshItems() {
+        fetchGenres()
+        searchController.searchBar.text = ""
+        searchController.dismiss(animated: true, completion: nil)
+        self.controllerView.collectionView.refreshControl?.endRefreshing()
     }
     
 }

@@ -41,6 +41,14 @@ class MoviesGridView: UIView {
         return view
     }()
     
+    lazy var refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl(frame: .zero)
+        refreshControl.translatesAutoresizingMaskIntoConstraints = false
+//        refreshControl.addTarget(self, action: #selector(refreshItems), for: .valueChanged)
+        refreshControl.tintColor = Design.Colors.darkYellow
+        return refreshControl
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupView()
@@ -49,7 +57,7 @@ class MoviesGridView: UIView {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+        
     func updateUI(for presentationState: MoviesGridPresentationState) {
         switch presentationState {
         case .loadingContent:
@@ -111,6 +119,10 @@ extension MoviesGridView: CodeView {
             make.top.equalToSuperview()
             make.bottom.equalToSuperview()
         }
+    }
+    
+    func setupAdditionalConfiguration() {
+        self.collectionView.refreshControl = self.refreshControl
     }
     
 }
