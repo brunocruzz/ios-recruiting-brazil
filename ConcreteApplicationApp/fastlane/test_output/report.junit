@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<testsuites name='ConcreteApplicationTests.xctest' tests='3' failures='0'>
+  <testsuite name='ConcreteApplicationTests.ConcreteApplicationTests' tests='2' failures='0'>
+    <testcase classname='ConcreteApplicationTests.ConcreteApplicationTests' name='testExample' time='0.001'/>
+    <testcase classname='ConcreteApplicationTests.ConcreteApplicationTests' name='testPerformanceExample' time='0.343'/>
+  </testsuite>
+  <testsuite name='ConcreteApplicationTests.MoviesGridViewControllerSpec' tests='1' failures='0'>
+    <testcase classname='ConcreteApplicationTests.MoviesGridViewControllerSpec' name='when_initializang_controller__should_not_be_nil' time='0.009'/>
+  </testsuite>
+</testsuites>
