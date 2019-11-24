@@ -68,7 +68,7 @@ class MoviesGridViewController: UIViewController {
     
     func fetchMovies(page: Int) {
         tmdb.getPopularMovies(page: page) { (result) in
-            switch result{
+            switch result {
             case .success(let movies):
                 self.movies.append(contentsOf: movies)
                 self.getMoviesFromRealm()

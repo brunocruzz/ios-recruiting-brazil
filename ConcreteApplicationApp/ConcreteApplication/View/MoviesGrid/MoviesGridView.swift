@@ -28,12 +28,6 @@ class MoviesGridView: UIView {
         activity.translatesAutoresizingMaskIntoConstraints = false
         return activity
     }()
-
-    lazy var errorView: ErrorView = {
-        let view = ErrorView(frame: .zero)
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
     
     lazy var emptySearchView: EmptySearchView = {
         let view = EmptySearchView(frame: .zero)
@@ -44,10 +38,11 @@ class MoviesGridView: UIView {
     lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl(frame: .zero)
         refreshControl.translatesAutoresizingMaskIntoConstraints = false
-//        refreshControl.addTarget(self, action: #selector(refreshItems), for: .valueChanged)
         refreshControl.tintColor = Design.Colors.darkYellow
         return refreshControl
     }()
+    
+    lazy var errorView = ErrorView(frame: self.collectionView.frame)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -63,26 +58,26 @@ class MoviesGridView: UIView {
         case .loadingContent:
             collectionView.isHidden = true
             activityIndicator.isHidden = false
-            errorView.isHidden = true
             emptySearchView.isHidden = true
+            collectionView.backgroundView = nil
         case .displayingContent:
             collectionView.isHidden = false
             activityIndicator.isHidden = true
-            errorView.isHidden = true
             emptySearchView.isHidden = true
+            collectionView.backgroundView = nil
         case .error:
-            collectionView.isHidden = true
+            //TODO:- change error state
+            collectionView.isHidden = false
             activityIndicator.isHidden = true
-            errorView.isHidden = false
             emptySearchView.isHidden = true
+            collectionView.backgroundView = errorView
         case .emptySearch:
             collectionView.isHidden = true
             activityIndicator.isHidden = true
-            errorView.isHidden = true
             emptySearchView.isHidden = false
+            collectionView.backgroundView = nil
         }
     }
-    
 }
 
 extension MoviesGridView: CodeView {
@@ -90,34 +85,19 @@ extension MoviesGridView: CodeView {
     func buildViewHierarchy() {
         addSubview(collectionView)
         addSubview(activityIndicator)
-        addSubview(errorView)
         addSubview(emptySearchView)
     }
     
     func setupConstraints() {
         collectionView.snp.makeConstraints { (make) in
-            make.left.equalToSuperview()
-            make.right.equalToSuperview()
-            make.top.equalToSuperview()
-            make.bottom.equalToSuperview()
+            make.left.right.top.bottom.equalToSuperview()
         }
         activityIndicator.snp.makeConstraints { (make) in
-            make.left.equalToSuperview()
-            make.right.equalToSuperview()
-            make.top.equalToSuperview()
-            make.bottom.equalToSuperview()
+            make.left.right.top.bottom.equalToSuperview()
         }
-        errorView.snp.makeConstraints { (make) in
-            make.left.equalToSuperview()
-            make.right.equalToSuperview()
-            make.top.equalToSuperview()
-            make.bottom.equalToSuperview()
-        }
+
         emptySearchView.snp.makeConstraints { (make) in
-            make.left.equalToSuperview()
-            make.right.equalToSuperview()
-            make.top.equalToSuperview()
-            make.bottom.equalToSuperview()
+            make.left.right.top.bottom.equalToSuperview()
         }
     }
     
