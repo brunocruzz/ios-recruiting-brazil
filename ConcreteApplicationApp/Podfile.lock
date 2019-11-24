@@ -1,5 +1,15 @@
 PODS:
+  - iOSSnapshotTestCase (6.2.0):
+    - iOSSnapshotTestCase/SwiftSupport (= 6.2.0)
+  - iOSSnapshotTestCase/Core (6.2.0)
+  - iOSSnapshotTestCase/SwiftSupport (6.2.0):
+    - iOSSnapshotTestCase/Core
   - Nimble (8.0.4)
+  - Nimble-Snapshots (8.0.0):
+    - Nimble-Snapshots/Core (= 8.0.0)
+  - Nimble-Snapshots/Core (8.0.0):
+    - iOSSnapshotTestCase (~> 6.0)
+    - Nimble (~> 8.0)
   - Quick (2.2.0)
   - Realm (3.21.0):
     - Realm/Headers (= 3.21.0)
@@ -18,6 +28,7 @@ PODS:
 
 DEPENDENCIES:
   - Nimble
+  - Nimble-Snapshots
   - Quick
   - RealmSwift
   - Reusable (~> 4.0)
@@ -25,7 +36,7 @@ DEPENDENCIES:
   - SnapKit (~> 4.2)
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  https://github.com/CocoaPods/Specs.git:
     - Nimble
     - Quick
     - Realm
@@ -33,9 +44,14 @@ SPEC REPOS:
     - Reusable
     - SDWebImage
     - SnapKit
+  trunk:
+    - iOSSnapshotTestCase
+    - Nimble-Snapshots
 
 SPEC CHECKSUMS:
+  iOSSnapshotTestCase: 9ab44cb5aa62b84d31847f40680112e15ec579a6
   Nimble: 18d5360282923225d62b09d781f63abc1a0111fc
+  Nimble-Snapshots: 8ec63f41ce6c7229a17be9a64edbc123b181f75b
   Quick: 7fb19e13be07b5dfb3b90d4f9824c855a11af40e
   Realm: 38e9dcb19104b58407167d99f70d4995f7c16023
   RealmSwift: 3183cc1ad48378fbcd634311b22c0e6c44021152
@@ -43,6 +59,6 @@ SPEC CHECKSUMS:
   SDWebImage: de4d90b5bff3571eae7bd16202b1f43135409fa5
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
 
-PODFILE CHECKSUM: e5e129af1f8015c5af08bd0264faa7ef0439330c
+PODFILE CHECKSUM: 44e66f25c731833044041e35890a6f9954392c1d
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.8.4
