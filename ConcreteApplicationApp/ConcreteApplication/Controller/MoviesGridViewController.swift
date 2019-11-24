@@ -23,8 +23,8 @@ class MoviesGridViewController: UIViewController {
     //TMDB API
     let tmdb = TMDBManager()
     //Properties
-    var movies:[Movie] = []
-    var genres:[Genre] = []
+    var movies: [Movie] = []
+    var genres: [Genre] = []
     var currentPage = 0
     
     fileprivate var presentationState: MoviesGridPresentationState = .loadingContent {
@@ -72,9 +72,21 @@ class MoviesGridViewController: UIViewController {
             case .success(let movies):
                 self.movies.append(contentsOf: movies)
                 self.getMoviesFromRealm()
-            case .error(let error):
+            case .error:
                 self.presentationState = .error
-                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    func refreshMovies() {
+        tmdb.getPopularMovies(page: 1) { (result) in
+            switch result {
+            case .success(let movies):
+                self.movies = movies
+                self.currentPage = 1
+                self.getMoviesFromRealm()
+            case .error:
+                self.presentationState = .error
             }
         }
     }
@@ -124,7 +136,7 @@ class MoviesGridViewController: UIViewController {
     
     @objc
     func refreshItems() {
-        fetchGenres()
+        self.refreshMovies()
         searchController.searchBar.text = ""
         searchController.dismiss(animated: true, completion: nil)
         self.controllerView.collectionView.refreshControl?.endRefreshing()
@@ -171,7 +183,8 @@ extension MoviesGridViewController: UISearchBarDelegate {
         if searchBar.text?.isEmpty ?? true {
             handleFetchOf(movies: self.movies)
         } else {
-        let filteredMovies = self.movies.filter({$0.title.range(of: searchBar.text ?? "", options: .caseInsensitive) != nil})
+        let filteredMovies = self.movies.filter({$0.title.range(of: searchBar.text ?? "",
+                                                                options: .caseInsensitive) != nil })
             if filteredMovies.count == 0 {
                 controllerView.emptySearchView.text = searchBar.text ?? ""
                 self.presentationState = .emptySearch

@@ -58,17 +58,8 @@ struct Movie {
             movieRealm.overview = self.overview
             movieRealm.releaseYear = self.releaseYear
             movieRealm.poster = (self.poster ?? UIImage(named: "Splash")!).jpegData(compressionQuality: 1.0)
-            
-//            self.genres.forEach({ (genre) in
-//                movieRealm.genres.append(genre.realm())
-//            })
-            
+
             self.genres.forEach({movieRealm.genres.append($0.realm())})
-            
-//            for genre in self.genres {
-//                movieRealm.genres.append(genre.realm())
-//            }
-            
         })
     }
     
@@ -93,8 +84,8 @@ extension Movie: Codable {
         overview = try container.decode(String.self, forKey: .overview)
         posterPath = try? container.decode(String.self, forKey: .posterPath)
         
-        let releaseDate = try container.decode(String.self, forKey: .releaseYear)
-        if !releaseDate.isEmpty {
+        if let releaseDate = try? container.decode(String.self, forKey: .releaseYear),
+            !releaseDate.isEmpty {
             releaseYear = String(releaseDate.prefix(4))
         } else {
             releaseYear = "Unknown"

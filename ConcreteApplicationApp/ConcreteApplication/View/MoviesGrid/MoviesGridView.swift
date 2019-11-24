@@ -66,7 +66,6 @@ class MoviesGridView: UIView {
             emptySearchView.isHidden = true
             collectionView.backgroundView = nil
         case .error:
-            //TODO:- change error state
             collectionView.isHidden = false
             activityIndicator.isHidden = true
             emptySearchView.isHidden = true

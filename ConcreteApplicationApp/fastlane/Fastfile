@@ -20,7 +20,6 @@ platform :ios do
 
   lane :coverage do
     # add actions here: https://docs.fastlane.tools/actions
-	#scan(workspace: "ConcreteApplication.xcworkspace", device: "iPhone 11", scheme: "ConcreteApplication", code_coverage: true)
 	slather(
 	  cobertura_xml: false,
 	  html: true,
