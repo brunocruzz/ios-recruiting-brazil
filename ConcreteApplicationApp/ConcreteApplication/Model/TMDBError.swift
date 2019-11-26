@@ -8,7 +8,7 @@
 
 import Foundation
 
-public enum TMDBError:Error{
+public enum TMDBError:Error {
     case buildingURL(String)
     case gettingData(String)
     case jsonSerialization(String)

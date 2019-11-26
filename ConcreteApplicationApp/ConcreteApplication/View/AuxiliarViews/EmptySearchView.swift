@@ -10,20 +10,12 @@
 import UIKit
 import SnapKit
 
-final class EmptySearchView: UIView{
+final class EmptySearchView: UIView {
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setupView()
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    lazy var label:UILabel = {
+    lazy var label: UILabel = {
         let label = UILabel(frame: .zero)
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "Sua busca não retornou resultados."
         return label
     }()
     
@@ -40,10 +32,19 @@ final class EmptySearchView: UIView{
             }
         }
     }
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupView()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
 }
 
-extension EmptySearchView: CodeView{
+extension EmptySearchView: CodeView {
     func buildViewHierarchy() {
         self.addSubview(label)
         self.addSubview(imageView)

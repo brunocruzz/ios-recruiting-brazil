@@ -31,7 +31,7 @@ class FilterTableViewCell: UITableViewCell, Reusable {
         return arrowImageView
     }()
 
-    func setupOption(with text: String, parameter: String){
+    func setupOption(with text: String, parameter: String) {
         self.titleLabel.text = text
         self.parameterLabel.text = parameter
         self.parameterLabel.isHidden = false
@@ -39,7 +39,7 @@ class FilterTableViewCell: UITableViewCell, Reusable {
         setupView()
     }
     
-    func setupParameter(with text: String, isSelecetd: Bool){
+    func setupParameter(with text: String, isSelecetd: Bool) {
         self.titleLabel.text = text
         self.parameterLabel.isHidden = true
         arrowImageView.image = UIImage(named: "check_icon")
@@ -76,7 +76,6 @@ extension FilterTableViewCell: CodeView {
             make.trailing.equalTo(arrowImageView.snp.leading)
             make.centerY.equalToSuperview()
         }
-
     }
     
     func setupAdditionalConfiguration() {
@@ -88,6 +87,5 @@ extension FilterTableViewCell: CodeView {
         self.parameterLabel.font = UIFont.boldSystemFont(ofSize: 15.0)
         self.selectionStyle = .none
     }
-    
     
 }

@@ -8,18 +8,23 @@
 
 import Foundation
 
-class TMDBManager{
+protocol TMDBManagerProtocol: class {
+    func getPopularMovies(page: Int, completion: @escaping (Result<[Movie]>) -> Void)
+    func getGenres(completion: @escaping (Result<[Genre]>) -> Void)
+}
+
+class TMDBManager: TMDBManagerProtocol {
     
     private var popularMoviesResponse: TMDBResponse?
     
-    private var authParams: [URLQueryItem]{
+    private var authParams: [URLQueryItem] {
         return [
             URLQueryItem(name: "api_key", value: TMDBConfig.privateKey),
             URLQueryItem(name: "language", value: TMDBConfig.langugae.portuguese)
         ]
     }
     
-    func getPopularMovies(page: Int, completion: @escaping (Result<[Movie]>) -> Void){
+    func getPopularMovies(page: Int, completion: @escaping (Result<[Movie]>) -> Void) {
         let endPoint = TMDBConfig.endPoint.popular
         var urlComponents = URLComponents(string: endPoint)
         
@@ -42,20 +47,19 @@ class TMDBManager{
             
             let jsonDecoder = JSONDecoder()
             
-            do{
+            do {
                 let moviesResponse = try jsonDecoder.decode(TMDBResponse.self, from: data)
                 DispatchQueue.main.async {
                     completion(.success(moviesResponse.results))
                 }
             } catch {
-//                print(String.init(data: data, encoding: String.Encoding.utf8)!)
                 completion(.error(TMDBError.jsonSerialization(error.localizedDescription)))
             }
             
             }.resume()
     }
     
-    func getGenres(completion: @escaping (Result<[Genre]>) -> Void){
+    func getGenres(completion: @escaping (Result<[Genre]>) -> Void) {
         let endPoint = TMDBConfig.endPoint.genres
         var urlComponents = URLComponents(string: endPoint)
         

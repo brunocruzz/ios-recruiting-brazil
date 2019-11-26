@@ -29,7 +29,7 @@ class MovieDetailTableViewController: UITableViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setupTableView(){
+    func setupTableView() {
         tableView.allowsSelection = false
         tableView.register(cellType: MoviePosterTableViewCell.self)
         tableView.register(cellType: DescriptionTableViewCell.self)
@@ -113,13 +113,13 @@ extension MovieDetailTableViewController {
     }
 }
 
-extension MovieDetailTableViewController: FavoriteMovieDelegate{
+extension MovieDetailTableViewController: FavoriteMovieDelegate {
     
     func changeFavorite(to status: Bool) {
-        if status == true{
+        if status == true {
             RealmManager.shared.save(object: self.movie.realm())
-        }else{
-            if let movieToDelete = RealmManager.shared.get(objectOf: MovieRealm.self, with: self.movie.id){
+        } else {
+            if let movieToDelete = RealmManager.shared.get(objectOf: MovieRealm.self, with: self.movie.id) {
                 RealmManager.shared.delete(object: movieToDelete)
             }
         }

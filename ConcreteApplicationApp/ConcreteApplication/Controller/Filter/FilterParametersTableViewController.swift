@@ -13,11 +13,11 @@ protocol FilterDelegate: class {
     func updateParameter(for option: FilterOptions, with value: String)
     func updateMovies(with filteredMovies:[Movie])
 }
-extension FilterDelegate{
-    func updateParameter(for option: FilterOptions, with value: String){}
-    func updateMovies(with filteredMovies:[Movie]){}
-}
 
+extension FilterDelegate {
+    func updateParameter(for option: FilterOptions, with value: String) {}
+    func updateMovies(with filteredMovies:[Movie]) {}
+}
 
 class FilterParametersTableViewController: UITableViewController {
 
@@ -26,7 +26,11 @@ class FilterParametersTableViewController: UITableViewController {
     var option: FilterOptions!
     var selectedParameter: String!
 
-    init(parameters: [String], option: FilterOptions , style: UITableView.Style, delegate: FilterDelegate, selectedParameter: String) {
+    init(parameters: [String], option: FilterOptions ,
+         style: UITableView.Style,
+         delegate: FilterDelegate,
+         selectedParameter: String) {
+        
         self.parameters = parameters
         self.option = option
         self.delegate = delegate

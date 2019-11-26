@@ -15,7 +15,9 @@ final class FavoriteMoviesTableViewDelegate: NSObject, UITableViewDelegate {
     var favoritedMovies:[Movie] = []
     var delegate: UnfavoriteMovieDelegate?
     
-    init(favoritedMovies: [Movie], delegate: UnfavoriteMovieDelegate) {
+    init(favoritedMovies: [Movie],
+         delegate: UnfavoriteMovieDelegate) {
+        
         self.favoritedMovies = favoritedMovies
         self.delegate = delegate
         super.init()
@@ -30,7 +32,7 @@ final class FavoriteMoviesTableViewDelegate: NSObject, UITableViewDelegate {
         let unfavoriteAction = UITableViewRowAction(style: .destructive, title: "Unfavorite") { (action, indexPath) in
             self.delegate?.deleteRowAt(indexPath: indexPath)
         }
-        return[unfavoriteAction]
+        return [unfavoriteAction]
     }
     
 }

@@ -17,9 +17,9 @@ struct TMDBResponse {
     
 }
 
-extension TMDBResponse: Codable{
+extension TMDBResponse: Codable {
     
-    enum CodingKeys: String, CodingKey{
+    enum CodingKeys: String, CodingKey {
         case page
         case totalResults = "total_results"
         case totalPages = "total_pages"

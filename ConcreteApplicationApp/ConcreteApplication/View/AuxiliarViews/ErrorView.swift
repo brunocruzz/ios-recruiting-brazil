@@ -9,16 +9,7 @@
 import UIKit
 import SnapKit
 
-class ErrorView: UIView{
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setupView()
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+class ErrorView: UIView {
     
     lazy var label:UILabel = {
         let label = UILabel(frame: .zero)
@@ -31,10 +22,20 @@ class ErrorView: UIView{
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
+
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupView()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
 }
 
-extension ErrorView: CodeView{
+extension ErrorView: CodeView {
+    
     func buildViewHierarchy() {
         self.addSubview(label)
         self.addSubview(imageView)
@@ -70,6 +71,5 @@ extension ErrorView: CodeView{
         imageView.contentMode = .scaleAspectFit
         imageView.image = UIImage(named: "errorIcon")
     }
-    
     
 }

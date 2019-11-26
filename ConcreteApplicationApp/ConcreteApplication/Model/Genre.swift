@@ -8,36 +8,35 @@
 
 import RealmSwift
 
-struct Genre{
+struct Genre {
     
     var id:Int
     var name: String?
     
-    public init(id: Int){
+    public init(id: Int) {
         self.id = id
     }
     
-    public init(id: Int, name: String){
+    public init(id: Int, name: String) {
         self.id = id
         self.name = name
     }
     
-    func realm() -> GenreRealm{
+    func realm() -> GenreRealm {
         return GenreRealm.build({ (genreRealm) in
             genreRealm.id = self.id
             genreRealm.name = self.name ?? ""
         })
     }
     
-    public init(realmObject: GenreRealm){
+    public init(realmObject: GenreRealm) {
         self.id = realmObject.id
         self.name = realmObject.name
     }
-    
 }
 
-extension Genre: Codable{
-    enum CodingKeys: String, CodingKey{
+extension Genre: Codable {
+    enum CodingKeys: String, CodingKey {
         case id
         case name
     }

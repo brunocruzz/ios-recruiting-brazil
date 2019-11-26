@@ -8,7 +8,7 @@
 
 import UIKit
 
-struct Movie{
+struct Movie {
     
     var id: Int
     var title: String
@@ -25,7 +25,7 @@ struct Movie{
                 posterPath: String,
                 overview: String,
                 releaseYear: String,
-                genres: [Genre]){
+                genres: [Genre]) {
         self.id = id
         self.title = title
         self.posterPath = posterPath
@@ -34,7 +34,8 @@ struct Movie{
         self.genres = genres
     }
     
-    public init(realmObject: MovieRealm){
+    public init(realmObject: MovieRealm) {
+        
         self.id = realmObject.id
         self.title = realmObject.title
         self.posterPath = realmObject.posterPath
@@ -42,14 +43,14 @@ struct Movie{
         self.releaseYear = realmObject.releaseYear
         self.genres = []
         realmObject.genres.forEach({self.genres.append(Genre(realmObject: $0))})
-        if let posterImageData = realmObject.poster{
+        if let posterImageData = realmObject.poster {
             self.poster = UIImage(data: posterImageData)
-        }else{
+        } else {
             self.poster = UIImage(named: "Splash")
         }
     }
     
-    func realm() -> MovieRealm{
+    func realm() -> MovieRealm {
         return MovieRealm.build({ (movieRealm) in
             movieRealm.id = self.id
             movieRealm.title = self.title
@@ -57,18 +58,16 @@ struct Movie{
             movieRealm.overview = self.overview
             movieRealm.releaseYear = self.releaseYear
             movieRealm.poster = (self.poster ?? UIImage(named: "Splash")!).jpegData(compressionQuality: 1.0)
-            for genre in self.genres{
-                movieRealm.genres.append(genre.realm())
-            }
-            
+
+            self.genres.forEach({movieRealm.genres.append($0.realm())})
         })
     }
     
 }
 
-extension Movie:Codable{
+extension Movie: Codable {
     
-    enum CodingKeys: String, CodingKey{
+    enum CodingKeys: String, CodingKey {
         case id
         case title
         case posterPath = "poster_path"
@@ -78,14 +77,15 @@ extension Movie:Codable{
     }
     
     init(from decoder: Decoder) throws {
+        
         let container = try decoder.container(keyedBy: CodingKeys.self)
         id = try container.decode(Int.self, forKey: .id)
         title = try container.decode(String.self, forKey: .title)
         overview = try container.decode(String.self, forKey: .overview)
         posterPath = try? container.decode(String.self, forKey: .posterPath)
         
-        let releaseDate = try container.decode(String.self, forKey: .releaseYear)
-        if !releaseDate.isEmpty {
+        if let releaseDate = try? container.decode(String.self, forKey: .releaseYear),
+            !releaseDate.isEmpty {
             releaseYear = String(releaseDate.prefix(4))
         } else {
             releaseYear = "Unknown"

@@ -40,7 +40,8 @@ final class MoviesGridCollectionViewCell: UICollectionViewCell, Reusable {
     }()
 
     
-    func setup(movie: Movie){
+    func setup(movie: Movie) {
+        
         self.movie = movie
         setupView()
         imageView.downloadImage(with: movie.posterPath ?? "")
@@ -48,7 +49,7 @@ final class MoviesGridCollectionViewCell: UICollectionViewCell, Reusable {
     }
 }
 
-extension MoviesGridCollectionViewCell: CodeView{
+extension MoviesGridCollectionViewCell: CodeView {
     func buildViewHierarchy() {
         contentView.addSubview(imageView)
         contentView.addSubview(view)
@@ -91,12 +92,11 @@ extension MoviesGridCollectionViewCell: CodeView{
         view.backgroundColor = Design.Colors.darkBlue
         favoriteView.contentMode = .center
         
-        if movie.isFavorite{
+        if movie.isFavorite {
             favoriteView.image = UIImage(named: "favorite_full_icon")
-        }else{
+        } else {
             favoriteView.image = UIImage(named: "favorite_gray_icon")
         }
-        
     }
     
 }

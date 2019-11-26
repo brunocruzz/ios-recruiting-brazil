@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Filter{
+struct Filter {
     
     var genre: String?
     var releaseYear: String?
@@ -18,7 +18,7 @@ struct Filter{
         self.releaseYear = nil
     }
     
-    mutating func updateParameter(of type: FilterOptions, with value: String){
+    mutating func updateParameter(of type: FilterOptions, with value: String) {
         switch type {
         case .date:
             self.releaseYear = value
