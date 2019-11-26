@@ -48,7 +48,7 @@ class FavoriteMoviesViewController: UIViewController {
     func getFavoriteMovies() {
         self.favoritedMovies = []
         let favoriteMoviesRealm = RealmManager.shared.getAll(objectsOf: MovieRealm.self)
-        favoriteMoviesRealm.forEach({self.favoritedMovies.append(Movie(realmObject: $0))})
+        favoriteMoviesRealm.forEach({ self.favoritedMovies.append(Movie(realmObject: $0)) })
         self.setupTableView(with: self.favoritedMovies)
     }
     

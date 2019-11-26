@@ -8,11 +8,16 @@
 
 import Foundation
 
-class TMDBManager{
+protocol TMDBManagerProtocol: class {
+    func getPopularMovies(page: Int, completion: @escaping (Result<[Movie]>) -> Void)
+    func getGenres(completion: @escaping (Result<[Genre]>) -> Void)
+}
+
+class TMDBManager: TMDBManagerProtocol {
     
     private var popularMoviesResponse: TMDBResponse?
     
-    private var authParams: [URLQueryItem]{
+    private var authParams: [URLQueryItem] {
         return [
             URLQueryItem(name: "api_key", value: TMDBConfig.privateKey),
             URLQueryItem(name: "language", value: TMDBConfig.langugae.portuguese)

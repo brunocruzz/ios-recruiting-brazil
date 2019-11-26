@@ -1,8 +1,8 @@
 //
-//  MoviesGridViewControllerSpec.swift
+//  MovieDetailViewControllerSpec.swift
 //  ConcreteApplicationTests
 //
-//  Created by Bruno Cruz on 05/11/19.
+//  Created by Bruno Cruz on 25/11/19.
 //  Copyright © 2019 Bruno Cruz. All rights reserved.
 //
 
@@ -12,24 +12,24 @@ import Nimble_Snapshots
 
 @testable import ConcreteApplication
 
-class MoviesGridViewControllerSpec: QuickSpec {
+class MovieDetailTableViewControllerSpec: QuickSpec {
     
     override func spec() {
         
         var window: UIWindow!
-        var sut: MoviesGridViewController!
+        var sut: MovieDetailTableViewController!
         
-        describe("MoviesGridViewController") {
+        describe("MovieDetailTableViewController") {
             
             beforeEach {
                 
-                let manager = TMDBManagerMock()
-                sut = MoviesGridViewController(manager: manager)
+                let movie = MoviesMock.getMovies().first!
+                sut = MovieDetailTableViewController(movie: movie,
+                                                     style: .grouped)
                 
                 window = UIWindow(frame: UIScreen.main.bounds)
                 window.rootViewController = sut
                 window.makeKeyAndVisible()
-                UIView.setAnimationsEnabled(false)
                 _ = sut.view
             }
             
@@ -38,15 +38,16 @@ class MoviesGridViewControllerSpec: QuickSpec {
             }
             
             context("when initialized") {
+                
                 it("should not be nil") {
                     expect(sut).toNot(beNil())
                 }
                 
-                it("should have the expected layout for first state") {
-                    expect(window) == snapshot("MoviesGridViewController")
+                it("should have the expected layout") {
+                    expect(window) == snapshot("MovieDetailTableViewController")
                 }
-                
             }
         }
     }
 }
+

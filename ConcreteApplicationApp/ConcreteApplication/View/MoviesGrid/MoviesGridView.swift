@@ -26,12 +26,14 @@ class MoviesGridView: UIView {
     lazy var activityIndicator: ActivityIndicator = {
         let activity = ActivityIndicator(frame: .zero)
         activity.translatesAutoresizingMaskIntoConstraints = false
+        activity.isHidden = true
         return activity
     }()
     
     lazy var emptySearchView: EmptySearchView = {
         let view = EmptySearchView(frame: .zero)
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.isHidden = true
         return view
     }()
     

@@ -113,12 +113,12 @@ extension MovieDetailTableViewController {
     }
 }
 
-extension MovieDetailTableViewController: FavoriteMovieDelegate{
+extension MovieDetailTableViewController: FavoriteMovieDelegate {
     
     func changeFavorite(to status: Bool) {
-        if status == true{
+        if status == true {
             RealmManager.shared.save(object: self.movie.realm())
-        }else{
+        } else {
             if let movieToDelete = RealmManager.shared.get(objectOf: MovieRealm.self, with: self.movie.id) {
                 RealmManager.shared.delete(object: movieToDelete)
             }

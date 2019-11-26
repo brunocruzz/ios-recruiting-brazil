@@ -21,20 +21,29 @@ class MoviesGridViewController: UIViewController {
     //SearchController
     let searchController = UISearchController(searchResultsController: nil)
     //TMDB API
-    let tmdb = TMDBManager()
+    var tmdb: TMDBManagerProtocol
     //Properties
     var movies: [Movie] = []
     var genres: [Genre] = []
     var currentPage = 0
     
-    fileprivate var presentationState: MoviesGridPresentationState = .loadingContent {
+    var presentationState: MoviesGridPresentationState = .loadingContent {
         didSet {
             DispatchQueue.main.async {
                 self.controllerView.updateUI(for: self.presentationState)
             }
         }
     }
-        
+    
+    init(manager: TMDBManagerProtocol = TMDBManager()) {
+        self.tmdb = manager
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func loadView() {
         self.view = controllerView
     }
@@ -96,7 +105,7 @@ class MoviesGridViewController: UIViewController {
         let favoritedMovies = RealmManager.shared.getAll(objectsOf: MovieRealm.self)
         for favoritedMovie in favoritedMovies {
             for (index,movie) in self.movies.enumerated() {
-                if favoritedMovie.id == movie.id{
+                if favoritedMovie.id == movie.id {
                     self.movies[index].isFavorite = true
                 }
             }
