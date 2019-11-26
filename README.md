@@ -100,3 +100,11 @@ Deixe o fork público para facilitar a inspeção do código.
 ### **ATENÇÃO**
 
 Não tente fazer o PUSH diretamente para ESTE repositório!
+
+## Observações
+
+Foi configurada uma lane do Fastlane rodando com o Slather.
+Porém a lane só consegue ser executada quando, no FastFile, o parâmetro *build_directory:* recebe como valor o path local do DerivedData.
+Pesquisas foram feitas, porém não consegui fazer com que este parâmetro funcionasse de maneira genérica para outras máquinas.
+
+Fiquem à vontade para contribuir para a solução desta issue.
