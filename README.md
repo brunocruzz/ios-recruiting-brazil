@@ -107,4 +107,4 @@ Foi configurada uma lane do Fastlane rodando com o Slather.
 Porém a lane só consegue ser executada quando, no FastFile, o parâmetro *build_directory:* recebe como valor o path local do DerivedData.
 Pesquisas foram feitas, porém não consegui fazer com que este parâmetro funcionasse de maneira genérica para outras máquinas.
 
-Fiquem à vontade para contribuir para a solução desta issue.
+Fiquem à vontade para contribuir para a solução desta issue =)
